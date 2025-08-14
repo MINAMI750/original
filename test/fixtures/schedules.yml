@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  what: MyString
+  when: MyString
+  how_long: 2025-07-21 17:28:31
+  remrks: MyString
+
+two:
+  what: MyString
+  when: MyString
+  how_long: 2025-07-21 17:28:31
+  remrks: MyString

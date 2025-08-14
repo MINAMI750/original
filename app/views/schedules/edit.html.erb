@@ -1,0 +1,23 @@
+<%= form_for @schedule do |f| %>
+  
+    <div class="field">
+    <%= f.label :タイトル %>
+    <%= f.text_field :title, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :費用 %>
+    <%= f.text_field :cost, :size => 30 %>
+  </div>
+   
+ <div class="field">
+    <%= f.label :必要な道具 %>
+    <%= f.text_field :item, :size => 30 %>
+ </div>
+
+  <div class="field">
+    <%= f.label :概要 %>
+    <%= f.text_field :comment, :size => 30 %>
+  </div> 
+  <%= f.submit "編集する" %>
+<% end %>

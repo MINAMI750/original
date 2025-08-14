@@ -1,0 +1,43 @@
+<h1>趣味投稿</h1>
+<h3>新規投稿ページ</h3>
+<%= form_for @schedules do |f| %>
+
+  <div class='form-group'>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+            <div class='form-check'>
+                <%= tag.label class: 'form-check-label' do %>
+                    <%= tag.check_box class: 'form-check-input' %>
+                    <%= tag.text %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+  
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :タイトル %>
+    <%= f.text_field :title, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :費用 %>
+    <%= f.text_field :cost, :size => 30 %>
+  </div>
+   
+ <div class="field">
+    <%= f.label :必要な道具 %>
+    <%= f.text_field :item, :size => 30 %>
+ </div>
+
+  <div class="field">
+    <%= f.label :概要 %>
+    <%= f.text_field :comment, :size => 30 %>
+  </div>
+  <%= f.submit "趣味を投稿する" %>
+<% end %>
+
+<%= link_to "趣味一覧に戻る", schedules_path %>

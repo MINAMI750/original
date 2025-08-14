@@ -1,0 +1,39 @@
+<h1>GeekTwitter</h1>
+<h3>投稿趣味詳細</h3>
+<div class="schedule">
+<% @schedule.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+<% end %>
+ 
+  <%= image_tag t.image_url, size: "250x200" if t.image? %>
+  <p><%= @schedule.user.email %></p>
+  <p><%= @schedule.title %></p>
+  <p><%= @schedule.cost %></p>
+  <p><%= @schedule.item %></p>
+  <p><%= @schedule.comment %></p>
+
+  <% if user_signed_in? && current_user.id == @user_id %>
+  <%= link_to "編集する", edit_schedule_path(@schedule.id) %>
+  <%= button_to "削除する", schedule_path(t.id), method: :delete %>  
+  <% end %>
+  
+<% if user_signed_in? %>
+     <% if current_user.already_liked?(@schedule) %>
+        <%= link_to schedule_like_path(id: @schedule.id, schedule_id: @schedule.id), data: { turbo_method: :delete } do %>
+            <p>いいねを取り消す</p><%= @schedule.likes.count %>
+        <% end %>
+     <% else %>
+        <%= link_to schedule_likes_path(id: @schedule.id, schedule_id: @schedule.id), data: { turbo_method: :post }  do %>
+            <p>いいね</p><%= @schedule.likes.count %>
+        <% end %>
+     <% end %>
+<% else %>
+    <p>いいねの数 = </p><%= @schedule.likes.count %>
+<% end %>
+
+<h2>いいねしたユーザー</h2>
+<% @schedule.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<%= link_to "投稿一覧に戻る", schedules_path %>
