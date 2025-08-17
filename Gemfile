@@ -36,10 +36,6 @@ gem "kamal", require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
-group :development, :test do
-  gem 'sqlite3' # 追加
-  gem 'dotenv-rails' # 追加
-end
 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -48,6 +44,9 @@ end
   gem 'simple_calendar', '~> 2.0'
 
 group :development, :test do
+  gem 'sqlite3' # 追加
+  gem 'dotenv-rails' # 追加
+end
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
@@ -56,7 +55,7 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-end
+
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
